@@ -522,7 +522,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model",
         type=str,
-        default="gpt-4o-2024-mini",
+        default="gpt-4o-mini",
         choices=[
             "claude-3-5-sonnet-20240620",
             "gpt-4o-2024-05-13",
