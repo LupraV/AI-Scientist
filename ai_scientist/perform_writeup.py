@@ -525,9 +525,11 @@ if __name__ == "__main__":
         default="gpt-4o-mini",
         choices=[
             "claude-3-5-sonnet-20240620",
+            "gpt-4o-mini",
             "gpt-4o-2024-05-13",
-            "gpt-4o-2024-08-08",
-            "gpt-4o-2024-mini",
+            "gpt-4o-2024-08-06",
+            "gpt-4o",
+            "gpt-4o-mini-2024-07-18",
             "deepseek-coder-v2-0724",
             "llama3.1-405b",
             # Anthropic Claude models via Amazon Bedrock
@@ -572,17 +574,29 @@ if __name__ == "__main__":
         print(f"Using OpenAI API with model {args.model}.")
         client_model = "gpt-4o-2024-05-13"
         client = openai.OpenAI()
-    elif args.model == "gpt-4o-2024-08-08":
+    elif args.model == "gpt-4o":
         import openai
 
         print(f"Using OpenAI API with model {args.model}.")
-        client_model = "gpt-4o-2024-08-08"
+        client_model = "gpt-4o"
+        client = openai.OpenAI()
+    elif args.model == "gpt-4o-2024-08-06":
+        import openai
+
+        print(f"Using OpenAI API with model {args.model}.")
+        client_model = "gpt-4o-2024-08-06"
         client = openai.OpenAI()
     elif args.model == "gpt-4o-mini":
         import openai
 
         print(f"Using OpenAI API with model {args.model}.")
         client_model = "gpt-4o-mini"
+        client = openai.OpenAI()
+    elif args.model == "gpt-4o-mini-2024-07-18":
+        import openai
+
+        print(f"Using OpenAI API with model {args.model}.")
+        client_model = "gpt-4o-mini-2024-07-18"
         client = openai.OpenAI()
     elif args.model == "deepseek-coder-v2-0724":
         import openai

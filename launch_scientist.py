@@ -50,7 +50,7 @@ def parse_arguments():
         choices=[
             "claude-3-5-sonnet-20240620",
             "gpt-4o-2024-05-13",
-            "gpt-4o-2024-08-08",
+            "gpt-4o",
             "gpt-4o-mini",
             "gemini-1.5-flash",
             "deepseek-coder-v2-0724",
@@ -188,7 +188,7 @@ def do_idea(
             main_model = Model("deepseek/deepseek-coder")
         elif model == "llama3.1-405b":
             main_model = Model("openrouter/meta-llama/llama-3.1-405b-instruct")
-        elif model in ["gpt-4o-2024-05-13", "gpt-4o-mini", "gpt-4o-2024-08-08"]:
+        elif model in ["gpt-4o-2024-05-13", "gpt-4o-mini", "gpt-4o"]:
             main_model = Model(model)
         else:
             main_model = Model(model)
@@ -354,11 +354,11 @@ if __name__ == "__main__":
         print(f"Using OpenAI API with model {args.model}.")
         client_model = "gpt-4o-mini"
         client = openai.OpenAI()
-    elif args.model == "gpt-4o-2024-08-08":
+    elif args.model == "gpt-4o":
         import openai
 
         print(f"Using OpenAI API with model {args.model}.")
-        client_model = "gpt-4o-2024-08-08"
+        client_model = "gpt-4o"
         client = openai.OpenAI()
     elif args.model == "deepseek-coder-v2-0724":
         import openai
