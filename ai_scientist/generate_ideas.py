@@ -281,32 +281,84 @@ def on_backoff(details):
 @backoff.on_exception(
     backoff.expo, requests.exceptions.HTTPError, on_backoff=on_backoff
 )
+#def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
+#    if not query:
+#        return None
+#    rsp = requests.get(
+#        "https://api.semanticscholar.org/graph/v1/paper/search",
+#        headers={"X-API-KEY": S2_API_KEY},
+#        params={
+#            "query": query,
+#            "limit": result_limit,
+#            "fields": "title,authors,venue,year,abstract,citationStyles,citationCount",
+#        },
+#    )
+#    print(f"Response Status Code: {rsp.status_code}")
+#    print(
+#        f"Response Content: {rsp.text[:500]}"
+#    )  # Print the first 500 characters of the response content
+#    rsp.raise_for_status()
+#    results = rsp.json()
+#    total = results["total"]
+#    time.sleep(1.0)
+#    if not total:
+#        return None
+
+#    papers = results["data"]
+#    return papers
+
 def search_for_papers(query, result_limit=10) -> Union[None, List[Dict]]:
     if not query:
         return None
-    rsp = requests.get(
-        "https://api.semanticscholar.org/graph/v1/paper/search",
-        headers={"X-API-KEY": S2_API_KEY},
-        params={
-            "query": query,
-            "limit": result_limit,
-            "fields": "title,authors,venue,year,abstract,citationStyles,citationCount",
-        },
-    )
-    print(f"Response Status Code: {rsp.status_code}")
-    print(
-        f"Response Content: {rsp.text[:500]}"
-    )  # Print the first 500 characters of the response content
-    rsp.raise_for_status()
-    results = rsp.json()
-    total = results["total"]
-    time.sleep(1.0)
-    if not total:
-        return None
 
-    papers = results["data"]
-    return papers
+    # Try Semantic Scholar API first
+    try:
+        rsp = requests.get(
+            "https://api.semanticscholar.org/graph/v1/paper/search",
+            headers={"X-API-KEY": S2_API_KEY},
+            params={
+                "query": query,
+                "limit": result_limit,
+                "fields": "title,authors,venue,year,abstract,citationStyles,citationCount",
+            },
+        )
+        print(f"Response Status Code: {rsp.status_code}")
+        print(f"Response Content: {rsp.text[:500]}")
+        rsp.raise_for_status()
+        results = rsp.json()
+        total = results["total"]
+        if not total:
+            return None
+        papers = results["data"]
+        return papers
 
+    except requests.exceptions.HTTPError as e:
+        print(f"Semantic Scholar API failed with error: {str(e)}")
+
+    # Fallback to arXiv API
+    try:
+        arxiv_rsp = requests.get(
+            "http://export.arxiv.org/api/query",
+            params={
+                "search_query": f"all:{query}",
+                "start": 0,
+                "max_results": result_limit,
+                "sortBy": "relevance",
+                "sortOrder": "descending",
+            },
+        )
+        print(f"arXiv Response Status Code: {arxiv_rsp.status_code}")
+        print(f"arXiv Response Content: {arxiv_rsp.text[:500]}")
+        arxiv_rsp.raise_for_status()
+        arxiv_results = arxiv_rsp.text
+        # Here you would need to parse the XML response from arXiv
+        # For now, returning the raw response
+        return arxiv_results
+
+    except requests.exceptions.HTTPError as e:
+        print(f"arXiv API failed with error: {str(e)}")
+
+    return None
 
 novelty_system_msg = """You are an ambitious AI PhD student who is looking to publish a paper that will contribute significantly to the field.
 You have an idea and you want to check if it is novel or not. I.e., not overlapping significantly with existing literature or already well explored.
@@ -462,9 +514,11 @@ if __name__ == "__main__":
     parser.add_argument(
         "--model",
         type=str,
-        default="gpt-4o-2024-05-13",
+        default="gpt-4o-mini",
         choices=[
             "claude-3-5-sonnet-20240620",
+            "gpt-4o-2024-08-08",
+            "gpt-4o-mini",
             "gpt-4o-2024-05-13",
             "deepseek-coder-v2-0724",
             "llama3.1-405b",
@@ -510,7 +564,19 @@ if __name__ == "__main__":
         import openai
 
         print(f"Using OpenAI API with model {args.model}.")
-        client_model = "gpt-4o-2024-05-13"
+        client_model = "gpt-4o-mini"
+        client = openai.OpenAI()
+    elif args.model == "gpt-4o-mini":
+        import openai
+
+        print(f"Using OpenAI API with model {args.model}.")
+        client_model = "gpt-4o-mini"
+        client = openai.OpenAI()
+    elif args.model == "gpt-4o-2024-08-08":
+        import openai
+
+        print(f"Using OpenAI API with model {args.model}.")
+        client_model = "gpt-4o-2024-08-08"
         client = openai.OpenAI()
     elif args.model == "deepseek-coder-v2-0724":
         import openai

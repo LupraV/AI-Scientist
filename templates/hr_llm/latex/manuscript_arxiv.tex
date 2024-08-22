@@ -1,0 +1,214 @@
+\documentclass{article}
+
+\usepackage{arxiv}
+\usepackage[square,numbers]{natbib}
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}		% Can be removed after putting your text content
+\usepackage{graphicx}
+%\usepackage{natbib}
+\usepackage{doi}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{amsmath}
+\title{Advancing Business Intelligence through Specialized Large Language Models: A Human Resources Paradigm}
+
+%\date{September 9, 1985}	% Here you can change the date presented in the paper title
+%\date{} 					% Or removing it
+
+\author{ \href{https://orcid.org/0000-0001-9416-1435}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}Teo ~Susnjak} \thanks{Corresponding author.} \\
+	School of Mathematical and Computational Sciences\\
+	Massey University\\
+	Albany, New Zealand \\
+	\texttt{t.susnjak@massey.ac.nz} \\
+	%% examples of more authors
+	\And
+	\href{https://orcid.org/0000-0000-0000-0000}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}...} \\
+	School of Mathematical and Computational Sciences\\
+	Massey University\\
+	Albany, New Zealand \\
+	\texttt{@massey.ac.nz} \\
+	\And
+	\href{https://orcid.org/0000-0000-0000-0000}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}...} \\
+	School of Mathematical and Computational Sciences\\
+	Massey University\\
+	Albany, New Zealand \\
+	\texttt{@massey.ac.nz} \\
+	\And
+	\href{https://orcid.org/0000-0000-0000-0000}{\includegraphics[scale=0.06]{orcid.pdf}\hspace{1mm}...}\\
+	School of Mathematical and Computational Sciences\\
+	Massey University\\
+	Albany, New Zealand \\
+	\texttt{@massey.ac.nz} \\
+}
+
+% Uncomment to remove the date
+%\date{}
+
+% Uncomment to override  the `A preprint' in the header
+%\renewcommand{\headeright}{Technical Report}
+%\renewcommand{\undertitle}{Technical Report}
+\renewcommand{\shorttitle}{...}
+
+%%% Add PDF metadata to help others organize their library
+%%% Once the PDF is generated, you can check the metadata with
+%%% $ pdfinfo template.pdf
+\hypersetup{
+pdftitle={A template for the arxiv style},
+pdfsubject={q-bio.NC, q-bio.QM},
+pdfauthor={David S.~Hippocampus, Elias D.~Striatum},
+pdfkeywords={First keyword, Second keyword, More},
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	\lipsum[1]
+\end{abstract}
+
+
+% keywords can be removed
+\keywords{First keyword \and Second keyword \and More}
+
+%=========================================
+% ============== To DO ===================
+%=========================================
+% - add 
+% - 
+%=========================================
+%=========================================
+
+\section{Introduction}
+% Establish the emerging role of AI in transforming business operations.
+% Define the scope: Application of LLMs in internal policy and HR management.
+% Clarify the research gap and articulate the paper's primary objectives.
+
+\section{Literature Review}
+
+\subsection{Evolution and Capabilities of Generative AI}
+% Comprehensive analysis of existing LLM frameworks.
+Generative AI, specifically in the field of Natural Language Processing (NLP), has witnessed transformative advancements, largely fueled by the advent of Large Language Models (LLMs) like GPT, BERT, and their successors. These models have not only revolutionized language understanding and generation but have also become integral to numerous widely-used products, including coding assistants and search engines. While their memorization and compositionality capabilities are noteworthy, they are not without limitations. Notable among these are the tendencies to generate non-factual, plausible-sounding outputs, often referred to as "hallucinations". This drawback becomes particularly pronounced in contexts requiring accurate factual recall or complex reasoning chains.
+
+\subsection{LLM Factuality and Hallucination}
+
+The factuality of Large Language Models (LLMs) has emerged as a crucial issue, particularly as these models find applications across diverse domains \cite{wang2023survey}. The "factuality issue" in LLMs pertains to their propensity to produce content that is inconsistent with established facts, a phenomenon of increasing concern given their expanding role in various services like search engines, chatbots, and content generators. This factuality challenge is not only a technical hurdle but is also essential for the responsible use of these tools in our daily lives, especially as misinformation can lead to significant societal and economic losses.
+
+Factuality in LLMs refers to their capability to generate content aligned with factual information, encompassing commonsense knowledge and domain-specific facts. This information can originate from sources like dictionaries, Wikipedia, or textbooks across various domains. However, the potential of LLMs to generate non-factual or misleading content has raised concerns . A notable study by Nori et al. (2023) investigated GPT-4's performance in medical competency examinations without any training or fine-tuning. While GPT-4 significantly outperformed its predecessors, concerns were raised about using LLMs in healthcare due to the risks associated with inaccurate recommendations and factual errors (Shen et al., 2023; Singhal et al., 2023; Hirosawa et al., 2023; Zhang et al., 2023c). These challenges underline the criticality of addressing factuality in LLMs, especially in domains where the accuracy of information is vital. Addressing the factuality issue in LLMs involves understanding their mechanisms for storing and processing knowledge and developing methodologies for evaluating and enhancing their factual reliability (Chen et al., 2023d; Meng et al., 2022; Gou et al., 2023; Kandpal et al., 2023). As LLMs evolve, ensuring their reliability and accuracy becomes imperative for their effective and responsible application across various fields.
+
+\subsection{Retrieval-augmented Generation (RAG)}
+% Critical examination of the RAG mechanism and its business applications.
+The RAG mechanism, particularly in its application to business, draws significantly from methods like query and document augmentation, and lexical dependency models. These techniques, aimed at refining IR systems, align with the core objectives of RAG: enhancing the depth and relevance of query and document interactions. By enriching representations and understanding lexical interdependencies, RAG emerges as a powerful tool in the arsenal of business AI, offering precision and contextual relevance in information processing.
+
+
+\subsection{LLM Instruct Finetuning}
+% Identification of research gaps and opportunities.
+
+The exploration of advanced IR techniques such as dense retrieval methods, multilingual models, and hybrid retrieval approaches uncovers a plethora of research opportunities for LLM instruct finetuning. The integration of word embeddings, transformer-based models, and nuanced, context-aware algorithms presents a promising avenue for enhancing the performance of LLMs. This area, ripe with potential, beckons further exploration to harness the full capabilities of LLMs in diverse linguistic and contextual scenarios.
+
+
+\subsection{Case Studies in HR}
+% Real-world applications showcased through detailed case studies.
+% Empirical evidence from user feedback and stakeholder interviews.
+% Assessment of the real-world impact on HR decision-making and operations.
+
+The principles and methodologies in IR can be astutely applied to the HR sector. Techniques like neural IR methods, multilingual data processing, and enhanced document retrieval offer tangible benefits in HR scenarios. These applications, ranging from nuanced decision-making to streamlined operational processes, highlight the versatility and impact of IR principles in the human-centric domain of HR.
+
+\section{Theoretical Framework}
+% Detailed exposition of LLM architectures relevant to the study.
+% Theoretical underpinnings of instruct fine-tuning and RAG.
+% Justification of the chosen methodologies within the context of AI and HR.
+
+The study of LLM architectures and their application in IR provides a robust theoretical framework for this domain. Deep learning methods for semantic retrieval, along with the analysis of dense retrieval models and hybrid approaches, offer a comprehensive understanding of the intricacies involved in LLM design and application. This framework not only underpins the instruct fine-tuning and RAG methodologies but also contextualizes their use within the AI landscape, particularly in relation to HR applications. The depth of these advanced IR techniques enriches our understanding of the potential and challenges inherent in LLMs, paving the way for future innovations.
+
+
+
+
+
+
+\section{Methodology}
+\subsection{LLM Instruct Fine-Tuning}
+% In-depth explanation of the fine-tuning process, with a focus on instructional dynamics.
+% Criteria and process for curating HR-specific datasets.
+% Hypotheses regarding model performance and applicability.
+
+\subsection{Retrieval-Augmented Generation (RAG)}
+% Detailed exploration of the RAG mechanism within the HR context.
+% Techniques for integrating HR-specific documents into the retrieval database.
+% Analysis of expected challenges and potential solutions.
+
+\subsection{Combined Approach: Fine-Tuning + RAG}
+% Strategic rationale for the hybrid approach.
+% Methodological innovations in integrating fine-tuning with RAG.
+% Hypotheses about the synergistic effects on model performance.
+
+
+\section{Experimental Setup}
+
+\subsection{LLM selection}
+% Detailed criteria for LLM selection and dataset preparation.
+
+\subsection{Evaluation metrics}
+% Comprehensive outline of evaluation metrics and testing protocols.
+
+
+\section{Results}
+% Statistical analysis and interpretation of findings.
+% Comparative evaluation of each methodology's effectiveness.
+% Discussion on any anomalies or unexpected outcomes, backed by data.
+
+\section{Discussion}
+% Analytical insights into the results, contextualized within broader AI research.
+% Comparative evaluation with extant literature.
+% Reflection on the practical implications and limitations of the study.
+
+\subsection{Ethical considerations}
+% In-depth discussion on ethical implications, data privacy, and user trust.
+% Strategies for mitigating risks and promoting responsible AI usage.
+
+\subsection{Limitations and future work}
+
+
+\section{Conclusion}
+% Summarization of key findings and their implications for AI in business contexts.
+% Reflective insights on the future trajectory of domain-specific LLM applications.
+
+
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}  %%% Uncomment this line and comment out the ``thebibliography'' section below to use the external .bib file (using bibtex) .
+
+
+%%% Uncomment this section and comment out the \bibliography{references} line above to use inline references.
+% \begin{thebibliography}{1}
+
+% 	\bibitem{kour2014real}
+% 	George Kour and Raid Saabne.
+% 	\newblock Real-time segmentation of on-line handwritten arabic script.
+% 	\newblock In {\em Frontiers in Handwriting Recognition (ICFHR), 2014 14th
+% 			International Conference on}, pages 417--422. IEEE, 2014.
+
+% 	\bibitem{kour2014fast}
+% 	George Kour and Raid Saabne.
+% 	\newblock Fast classification of handwritten on-line arabic characters.
+% 	\newblock In {\em Soft Computing and Pattern Recognition (SoCPaR), 2014 6th
+% 			International Conference of}, pages 312--318. IEEE, 2014.
+
+% 	\bibitem{hadash2018estimate}
+% 	Guy Hadash, Einat Kermany, Boaz Carmeli, Ofer Lavi, George Kour, and Alon
+% 	Jacovi.
+% 	\newblock Estimate and replace: A novel approach to integrating deep neural
+% 	networks with existing applications.
+% 	\newblock {\em arXiv preprint arXiv:1804.09028}, 2018.
+
+% \end{thebibliography}
+
+
+\end{document}

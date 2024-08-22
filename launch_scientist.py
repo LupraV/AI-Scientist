@@ -52,6 +52,7 @@ def parse_arguments():
             "gpt-4o-2024-05-13",
             "gpt-4o-2024-08-08",
             "gpt-4o-mini",
+            "gemini-1.5-flash",
             "deepseek-coder-v2-0724",
             "llama3.1-405b",
             # Anthropic Claude models via Amazon Bedrock
@@ -187,6 +188,8 @@ def do_idea(
             main_model = Model("deepseek/deepseek-coder")
         elif model == "llama3.1-405b":
             main_model = Model("openrouter/meta-llama/llama-3.1-405b-instruct")
+        elif model in ["gpt-4o-2024-05-13", "gpt-4o-mini", "gpt-4o-2024-08-08"]:
+            main_model = Model(model)
         else:
             main_model = Model(model)
         coder = Coder.create(
@@ -248,7 +251,7 @@ def do_idea(
                 paper_text = load_paper(f"{folder_name}/{idea['Name']}.pdf")
                 review = perform_review(
                     paper_text,
-                    model="gpt-4o-2024-08-08",
+                    model=model,  # Use the model passed as a parameter
                     client=openai.OpenAI(),
                     num_reflections=5,
                     num_fs_examples=1,
@@ -274,7 +277,7 @@ def do_idea(
                 paper_text = load_paper(f"{folder_name}/{idea['Name']}_improved.pdf")
                 review = perform_review(
                     paper_text,
-                    model="gpt-4o-2024-08-08",
+                    model=model,
                     client=openai.OpenAI(),
                     num_reflections=5,
                     num_fs_examples=1,
@@ -339,6 +342,18 @@ if __name__ == "__main__":
 
         print(f"Using Vertex AI with model {client_model}.")
         client = anthropic.AnthropicVertex()
+    elif args.model == "gpt-4o-2024-05-13":
+        import openai
+
+        print(f"Using OpenAI API with model {args.model}.")
+        client_model = "gpt-4o-2024-05-13"
+        client = openai.OpenAI()
+    elif args.model == "gpt-4o-mini":
+        import openai
+
+        print(f"Using OpenAI API with model {args.model}.")
+        client_model = "gpt-4o-mini"
+        client = openai.OpenAI()
     elif args.model == "gpt-4o-2024-08-08":
         import openai
 

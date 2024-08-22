@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "graph_rag_tuning",
+    "Title": "Fine-tuning Tiny LLMs with Knowledge Graph-Enhanced RAG for HR Policy QA",
+    "Experiment": "Integrate a Knowledge Graph into the RAG pipeline and fine-tune a tiny LLM on HR policy documents. Assess the improvement in retrieval accuracy and response quality over standard RAG approaches.",
+    "Interestingness": 5,
+    "Feasibility": 5,
+    "Novelty": 4
+  },
+  {
+    "Name": "multi_hop_reasoning",
+    "Title": "Enhancing Multi-hop Reasoning in Tiny LLMs with Graph-Based Retrieval",
+    "Experiment": "Test the impact of incorporating graph-based retrieval methods on multi-hop reasoning tasks in QA using tiny LLMs. Compare the performance with traditional retrieval methods.",
+    "Interestingness": 5,
+    "Feasibility": 4,
+    "Novelty": 5
+  },
+  {
+    "Name": "synthetic_augmentation",
+    "Title": "Improving Tiny LLM QA Through Synthetic Data Augmentation and Summarization",
+    "Experiment": "Generate synthetic HR policy data for augmentation, then fine-tune a tiny LLM. Evaluate the impact on QA accuracy and efficiency, particularly in domain-specific queries.",
+    "Interestingness": 4,
+    "Feasibility": 6,
+    "Novelty": 3
+  }
+]
